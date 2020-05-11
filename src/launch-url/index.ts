@@ -53,7 +53,6 @@ loading_manager.onError = (url) => console.log('There was an error loading ' + u
 // automatically included in our output folder
 const font_url = require('file-loader!../assets/fonts/Passion.js').default
 const target_url = require("file-loader!../assets/example-tracking-image.zpt").default;
-const flyer_url = require("file-loader!../assets/example-tracking-image.png").default;
 
 
 // Create a zappar image_tracker and wrap it in an image_tracker_group for us
@@ -79,15 +78,15 @@ button_background_plane.position.z = 0.001;
 
 // Loaders are used to load external files
 const font_loader = new THREE.FontLoader();
-const texture_loader = new THREE.TextureLoader();
 
-// Create a plane geometry mesh, apply the flyer texture and scale it.
+// Create a plane geometry mesh for the background
 const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(1.473, 2.05),
+    new THREE.PlaneGeometry(3.07, 2.05),
     new THREE.MeshBasicMaterial({
-        map: texture_loader.load(flyer_url),
         side: THREE.DoubleSide,
-        color: new THREE.Color(0.5, 0.5, 0.5),
+        color: new THREE.Color(0, 0, 0),
+        transparent: true,
+        opacity: 0.8
     }),
 );
 
