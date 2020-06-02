@@ -3,10 +3,14 @@
 
 // In this example we track a 3D model using instant world tracking
 
+import * as THREE from "three";
 import * as ZapparThree from "@zappar/zappar-threejs"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-import * as THREE from "three";
+
+// ZapparThree provides a LoadingManager that shows a progress bar while
+// the assets are downloaded
+const manager = new ZapparThree.LoadingManager();
 
 // Construct our ThreeJS renderer and scene as usual
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -53,7 +57,8 @@ scene.add(instant_tracker_group);
 const gltfUrl = require("file-loader!../assets/waving.glb").default;
 
 // Load a 3D model to place within our group (using ThreeJS's GLTF loader)
-let gltfLoader = new GLTFLoader();
+// Pass our loading manager in to ensure the progress bar works correctly
+let gltfLoader = new GLTFLoader(manager);
 gltfLoader.load(gltfUrl, gltf => {
     // Now the model has been loaded, we can add it to our instant_tracker_group
     instant_tracker_group.add(gltf.scene);
@@ -68,8 +73,8 @@ directionalLight.lookAt(0, 0, 0);
 instant_tracker_group.add(directionalLight);
 
 // And then a little ambient light to brighten the model up a bit
-let ambeintLight = new THREE.AmbientLight("white", 0.4);
-instant_tracker_group.add(ambeintLight);
+let ambientLight = new THREE.AmbientLight("white", 0.4);
+instant_tracker_group.add(ambientLight);
 
 // When the experience loads we'll let the user choose a place in their room for
 // the content to appear using setAnchorPoseFromCameraOffset (see below)

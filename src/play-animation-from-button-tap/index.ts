@@ -8,6 +8,9 @@ import * as ZapparThree from "@zappar/zappar-threejs"
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+// ZapparThree provides a LoadingManager that shows a progress bar while
+// the assets are downloaded
+const manager = new ZapparThree.LoadingManager();
 
 // Construct our ThreeJS renderer and scene as usual
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -39,9 +42,8 @@ ZapparThree.glContextSet(renderer.getContext());
 // that's provided by the Zappar camera
 scene.background = camera.backgroundTexture;
 
-// standard three js loader, will help us check if there are issues loading content.
-const loading_manager = new THREE.LoadingManager();
-loading_manager.onError = (url) => console.log('There was an error loading ' + url);
+// Set an error handler on the loader to help us check if there are issues loading content.
+manager.onError = (url) => console.log('There was an error loading ' + url);
 
 
 // Since we're using webpack, we can use the 'file-loader' to make sure these assets are
@@ -52,7 +54,8 @@ const target_url = require("file-loader!../assets/example-tracking-image.zpt").d
 
 // Create a zappar image_tracker and wrap it in an image_tracker_group for us
 // to put our ThreeJS content into
-const image_tracker = new ZapparThree.ImageTrackerLoader(loading_manager).load(target_url);
+// Pass our loading manager in to ensure the progress bar works correctly
+const image_tracker = new ZapparThree.ImageTrackerLoader(manager).load(target_url);
 const image_tracker_group = new ZapparThree.ImageAnchorGroup(camera, image_tracker);
 
 // Add our image tracker group into the ThreeJS scene
@@ -66,7 +69,7 @@ let action: THREE.AnimationAction;
 let mixer: THREE.AnimationMixer;
 
 // Load a 3D model to place within our group (using ThreeJS's GLTF loader)
-let gltfLoader = new GLTFLoader();
+let gltfLoader = new GLTFLoader(manager);
 gltfLoader.load(gltf_url, gltf => {
 
     // get the animation and re-declare mixer and action.

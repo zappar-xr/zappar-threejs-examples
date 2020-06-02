@@ -7,6 +7,10 @@ import * as THREE from "three";
 import * as ZapparThree from "@zappar/zappar-threejs"
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
+// ZapparThree provides a LoadingManager that shows a progress bar while
+// the assets are downloaded
+const manager = new ZapparThree.LoadingManager();
+
 // Construct our ThreeJS renderer and scene as usual
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const scene = new THREE.Scene();
@@ -38,9 +42,10 @@ ZapparThree.glContextSet(renderer.getContext());
 // that's provided by the Zappar camera
 scene.background = camera.backgroundTexture;
 
-// Create a FaceTracker and a FaceAnchorGroup from it
-// to put Three content in 
-const face_tracker = new ZapparThree.FaceTrackerLoader().load()
+// Create a FaceTracker and a FaceAnchorGroup from it to put Three content in
+// Pass our loading manager to the loader to ensure that the progress bar
+// works correctly
+const face_tracker = new ZapparThree.FaceTrackerLoader(manager).load()
 const face_tracker_group = new ZapparThree.FaceAnchorGroup(camera, face_tracker);
 // Add our face tracker group into the ThreeJS scene
 scene.add(face_tracker_group);
@@ -55,7 +60,8 @@ const gltfUrl = require("file-loader!../assets/masked_helmet.glb").default;
 // automatically included in our output folder
 
 // Load a 3D model to place within our group (using ThreeJS's GLTF loader)
-const gltfLoader = new GLTFLoader();
+// Pass our loading manager in to ensure the progress bar works correctly
+const gltfLoader = new GLTFLoader(manager);
 gltfLoader.load(gltfUrl, (gltf) => {
 
     // Position the loaded content to overlay user's face

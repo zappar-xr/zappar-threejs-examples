@@ -9,6 +9,9 @@ import * as THREE from "three";
 import * as ZapparThree from "@zappar/zappar-threejs"
 import { InteractionHelper } from '../interactionhelper';
 
+// ZapparThree provides a LoadingManager that shows a progress bar while
+// the assets are downloaded
+const manager = new ZapparThree.LoadingManager();
 
 // Construct our ThreeJS renderer and scene as usual
 const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -45,9 +48,8 @@ scene.background = camera.backgroundTexture;
 // are tapped on screen. See interactionhelper.ts for its implementation
 const interactionHelper = new InteractionHelper(camera, renderer);
 
-// Standard three js loader, will help us check if there are issues loading content.
-const loading_manager = new THREE.LoadingManager();
-loading_manager.onError = (url) => console.log('There was an error loading ' + url);
+// Set an error handler on the loader to help us check if there are issues loading content.
+manager.onError = (url) => console.log('There was an error loading ' + url);
 
 // Since we're using webpack, we can use the 'file-loader' to make sure these assets are
 // automatically included in our output folder
@@ -57,7 +59,8 @@ const target_url = require("file-loader!../assets/example-tracking-image.zpt").d
 
 // Create a zappar image_tracker and wrap it in an image_tracker_group for us
 // to put our ThreeJS content into
-const image_tracker = new ZapparThree.ImageTrackerLoader(loading_manager).load(target_url);
+// Pass our loading manager in to ensure the progress bar works correctly
+const image_tracker = new ZapparThree.ImageTrackerLoader(manager).load(target_url);
 const image_tracker_group = new ZapparThree.ImageAnchorGroup(camera, image_tracker);
 const content_group = new THREE.Group();
 
@@ -77,7 +80,8 @@ const button_background_plane = new THREE.Mesh(
 button_background_plane.position.z = 0.001;
 
 // Loaders are used to load external files
-const font_loader = new THREE.FontLoader();
+// Pass our loading manager in to ensure the progress bar works correctly
+const font_loader = new THREE.FontLoader(manager);
 
 // Create a plane geometry mesh for the background
 const plane = new THREE.Mesh(

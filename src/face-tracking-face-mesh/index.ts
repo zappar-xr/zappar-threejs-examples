@@ -7,6 +7,10 @@
 import * as ZapparThree from "@zappar/zappar-threejs"
 import * as THREE from "three";
 
+// ZapparThree provides a LoadingManager that shows a progress bar while
+// the assets are downloaded
+const manager = new ZapparThree.LoadingManager();
+
 // Construct our ThreeJS renderer and scene as usual
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 const scene = new THREE.Scene();
@@ -37,19 +41,22 @@ ZapparThree.glContextSet(renderer.getContext());
 // that's provided by the Zappar camera
 scene.background = camera.backgroundTexture;
 
-// Create a FaceTracker and a FaceAnchorGroup from it to put our Three content in 
-const face_tracker = new ZapparThree.FaceTrackerLoader().load()
+// Create a FaceTracker and a FaceAnchorGroup from it to put our Three content in
+// Pass our loading manager in to ensure the progress bar works correctly
+const face_tracker = new ZapparThree.FaceTrackerLoader(manager).load()
 const face_tracker_group = new ZapparThree.FaceAnchorGroup(camera, face_tracker);
 
 // Add our face tracker group into the ThreeJS scene
 scene.add(face_tracker_group);
 
 // Load the face mesh and create a THREE BufferGeometry from it
-let faceMesh = new ZapparThree.FaceMeshLoader().load();
+// Pass our loading manager in to ensure the progress bar works correctly
+let faceMesh = new ZapparThree.FaceMeshLoader(manager).load();
 let faceBufferGeometry = new ZapparThree.FaceBufferGeometry(faceMesh);
 
 // Load the face template texture to render on the mesh
-let textureLoader = new THREE.TextureLoader();
+// Pass our loading manager in to ensure the progress bar works correctly
+let textureLoader = new THREE.TextureLoader(manager);
 let faceTexture = textureLoader.load(require("file-loader!../assets/faceMeshTemplate.png").default);
 faceTexture.flipY = false;
 
