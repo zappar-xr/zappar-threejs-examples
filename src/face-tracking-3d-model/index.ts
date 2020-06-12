@@ -53,9 +53,15 @@ scene.add(face_tracker_group);
 // Start with the content group invisible
 face_tracker_group.visible = false;
 
+// We want the user's face to appear in the center of the helmet
+// so use ZapparThree.HeadMaskMesh to mask out the back of the helmet.
+// In addition to constructing here we'll call mask.updateFromFaceAnchorGroup(...)
+// in the frame loop later.
+let mask = new ZapparThree.HeadMaskMeshLoader().load();
+face_tracker_group.add(mask);
 
 // Get the URL of the "masked_helmet.glb" 3D model
-const gltfUrl = require("file-loader!../assets/masked_helmet.glb").default;
+const gltfUrl = require("file-loader!../assets/z_helmet.glb").default;
 // Since we're using webpack, we can use the 'file-loader' to make sure it's
 // automatically included in our output folder
 
@@ -67,16 +73,6 @@ gltfLoader.load(gltfUrl, (gltf) => {
     // Position the loaded content to overlay user's face
     gltf.scene.position.set(0.3, -1.3, 0);
     gltf.scene.scale.set(1.1, 1.1, 1.1);
-
-    // One of the helmet's children is a 'mask' object that we want
-    // to use to hide the elements of the helmet where the user's face
-    // should appear. To achieve this, we loop through the meshes in the
-    // model, and set the 'colorWrite' material property for the mask to false
-    // This, in combination with its render order in the mesh, should achieve
-    // the effect we desire
-    for (let child of gltf.scene.getObjectByName('Helmet_Mask')!.children as THREE.Mesh[]) {
-        (child.material as THREE.Material).colorWrite = false;
-    }
 
     // Add the scene to the tracker group
     face_tracker_group.add(gltf.scene)
@@ -104,6 +100,9 @@ function render(): void {
 
     // The Zappar camera must have updateFrame called every frame
     camera.updateFrame(renderer);
+
+    // Update the head mask so it fits the user's head in this frame
+    mask.updateFromFaceAnchorGroup(face_tracker_group);
 
     // Draw the ThreeJS scene in the usual way, but using the Zappar camera
     renderer.render(scene, camera);
