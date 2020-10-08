@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .sidenav {
+      height: 100%;
+      width: 20%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    .sidenav a {
+      padding-left: 8%;
+      text-decoration: none;
+      font-size: 15px;
+      color: #818181;
+      display: block;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav a:focus {
+      background-color: lightcoral
+    }
+
+    .frame {
+      overflow: hidden;
+      position: fixed;
+      margin-left: 20%;
+      height: 100%;
+      width: 100%;
+      border: none;
+      font-size: 28px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {}
+
+      .sidenav a {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sidenav">
+    <a href="face-tracking-3d-model.html" target="ar_iframe">Face Tracking - 3D Model</a>
+    <a href="face-tracking-face-mesh.html" target="ar_iframe">Face Tracking - Face Mesh</a>
+    <a href="play-animation-from-button-tap.html" target="ar_iframe"></i>Image Tracking - Play Animation
+      (button)</a>
+    <a href="play-animation-from-gaze.html" target="ar_iframe"></i>Image Tracking - Play Animation
+      (gaze)</a>
+    <a href="launch-url.html" target="ar_iframe"></i>Image Tracking - Launch Url</a>
+    <a href="instant-tracking-3d-model.html" target="ar_iframe"><i class="fa fa-mobile-alt" aria-hidden="false"></i>
+      Instant Tracking - 3D
+      Model</a>
+  </div>
+
+  <div class="main">
+    <iframe class="frame" src="face-tracking-face-mesh.html" allow="camera;accelerometer;gyroscope" frameborder="0"
+      name="ar_iframe"></iframe>
+  </div>
+
+</body>
+
+</html>
