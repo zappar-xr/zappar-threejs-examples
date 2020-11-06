@@ -80,8 +80,10 @@ instant_tracker_group.add(ambientLight);
 // the content to appear using setAnchorPoseFromCameraOffset (see below)
 // The user can confirm the location by tapping on the screen
 let hasPlaced = false;
-renderer.domElement.addEventListener("click", () => {
+let placeButton = document.getElementById("tap-to-place") || document.createElement("div");
+placeButton.addEventListener("click", () => {
     hasPlaced = true;
+    placeButton.remove();
 });
 
 // Use a function to render our scene as usual

@@ -3,12 +3,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const baseConfig = require('./webpack.base.config');
 
 baseConfig.entry = {
-    launchUrl: "./src/launch-url/index.ts",
-    playAnimationFromButtonTap: "./src/play-animation-from-button-tap/index.ts",
-    playAnimationFromGaze: "./src/play-animation-from-gaze/index.ts",
+    launchUrl: "./src/image-tracking-launch-url/index.ts",
+    playAnimationFromButtonTap: "./src/image-tracking-glb-animation/index.ts",
+    playAnimationFromGaze: "./src/image-tracking-play-animation-from-gaze/index.ts",
     faceTrackingFaceMesh: "./src/face-tracking-face-mesh/index.ts",
     faceTracking3DModel: "./src/face-tracking-3d-model/index.ts",
-    instantTracking3Dmodel: "./src/instant-tracking-3d-model/index.ts"
+    instantTracking3Dmodel: "./src/instant-tracking-gltf-loader/index.ts"
 }
 
 baseConfig.output = {
@@ -18,17 +18,17 @@ baseConfig.output = {
 
 baseConfig.plugins = [
     new HtmlWebpackPlugin({
-        filename: 'launch-url.html',
+        filename: 'image-tracking-launch-url.html',
         template: './src/base.html',
         chunks: ['launchUrl']
     }),
     new HtmlWebpackPlugin({
-        filename: 'play-animation-from-button-tap.html',
+        filename: 'image-tracking-glb-animation.html',
         template: './src/play-animation-from-button-tap.html',
         chunks: ['playAnimationFromButtonTap']
     }),
     new HtmlWebpackPlugin({
-        filename: 'play-animation-from-gaze.html',
+        filename: 'image-tracking-play-animation-from-gaze.html',
         template: './src/base.html',
         chunks: ['playAnimationFromGaze']
     }),
@@ -43,8 +43,8 @@ baseConfig.plugins = [
         chunks: ['faceTracking3DModel']
     }),
     new HtmlWebpackPlugin({
-        filename: 'instant-tracking-3d-model.html',
-        template: './src/base.html',
+        filename: 'instant-tracking-gltf-loader.html',
+        template: './src/instant-tracking.html',
         chunks: ['instantTracking3Dmodel']
     })
 ];

@@ -23,7 +23,7 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
-    "@zappar/zappar-threejs": "0.2.11",
+    "@zappar/zappar-threejs": "0.3.4",
     "three": "^0.113.2"
   }
 }
