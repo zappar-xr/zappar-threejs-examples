@@ -1,0 +1,29 @@
+{
+  "name": "zappar-threejs-examples",
+  "version": "0.0.1",
+  "description": "Examples using Zappar's ThreeJS wrapper",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "start": "webpack --config=webpack.config.js --mode=development && webpack-dev-server --config=webpack.config.js"
+  },
+  "author": "Zappar Limited",
+  "license": "Proprietary",
+  "devDependencies": {
+    "@types/node": "^13.7.1",
+    "file-loader": "^5.0.2",
+    "gh-pages": "^3.1.0",
+    "html-webpack-plugin": "^3.2.0",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0",
+    "worker-loader": "^2.0.0"
+  },
+  "dependencies": {
+    "@zappar/zappar-threejs": "0.3.4",
+    "three": "^0.113.2"
+  }
+}
