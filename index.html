@@ -7,26 +7,31 @@
     crossorigin="anonymous" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
+    html, body {
       font-family: "Lato", sans-serif;
-      overflow: hidden;
       margin: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .sidenav {
-      height: 100%;
-      width: 20%;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #111;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 250px;
+      background-color: white;
       overflow-x: hidden;
-      padding-top: 20px;
-    }
+      padding-top: 45px;
+      display: none;
+      z-index: 100;
+      height: 100%;
+      box-sizing: border-box;
+      -webkit-box-shadow: 5px 5px 15px 5px #000000;
+      box-shadow: 0px 0px 20px 0px #000000;
+  }
 
     .sidenav a {
-      padding-left: 8%;
+      padding-left: 25px;
       text-decoration: none;
       font-size: 15px;
       color: #818181;
@@ -41,44 +46,101 @@
       background-color: lightcoral
     }
 
-    .frame {
-      overflow: hidden;
-      position: fixed;
-      margin-left: 20%;
+    .main {
       height: 100%;
-      width: 80%;
-      border: none;
-      font-size: 28px;
+      flex-grow: 0.9;
+      position: relative;
     }
 
-    @media screen and (max-height: 450px) {
-      .sidenav {}
-
-      .sidenav a {
-        font-size: 1em;
-      }
+    .frame {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      border: 0;
+      top: 0;
+      left: 0;
     }
+
+    #menubutton {
+        position: fixed;
+        z-index: 1000;
+        font-size: 20px;
+        top: 20px;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.6);
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    #closebutton {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 20px;
+    }
+    
+    .sidenav-open #menubutton {
+      display: none;
+    }
+
+    .sidenav-open .sidenav {
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul > li {
+      padding-bottom: 15px;
+    }
+
   </style>
 </head>
 
 <body>
 
+  <div id="menubutton">
+    <i class="fas fa-bars"></i>
+  </div>
+
   <div class="sidenav">
+
+    <div id="closebutton">
+      <i class="fas fa-times"></i>
+    </div>
     
-   <a href="face-tracking-3d-model.html" target="ar_iframe">face tracking-3d-model</a>
-<a href="face-tracking-face-mesh.html" target="ar_iframe">face tracking-face-mesh</a>
-<a href="image-tracking-glb-animation.html" target="ar_iframe">image tracking-glb-animation</a>
-<a href="image-tracking-launch-url.html" target="ar_iframe">image tracking-launch-url</a>
-<a href="image-tracking-play-animation-from-gaze.html" target="ar_iframe">image tracking-play-animation-from-gaze</a>
-<a href="instant-tracking-gltf-loader.html" target="ar_iframe">instant tracking-gltf-loader</a>
+   <ul><li><a href="face-tracking-3d-model.html" onclick="closesidebar()" target="ar_iframe">face tracking-3d-model</a></li>
+<li><a href="face-tracking-face-mesh.html" onclick="closesidebar()" target="ar_iframe">face tracking-face-mesh</a></li>
+<li><a href="image-tracking-glb-animation.html" onclick="closesidebar()" target="ar_iframe">image tracking-glb-animation</a></li>
+<li><a href="image-tracking-launch-url.html" onclick="closesidebar()" target="ar_iframe">image tracking-launch-url</a></li>
+<li><a href="image-tracking-play-animation-from-gaze.html" onclick="closesidebar()" target="ar_iframe">image tracking-play-animation-from-gaze</a></li>
+<li><a href="instant-tracking-gltf-loader.html" onclick="closesidebar()" target="ar_iframe">instant tracking-gltf-loader</a></li></ul>
 
   </div>
 
-  <div class="main">
-    <iframe class="frame" src="face-tracking-face-mesh.html" allow="camera;accelerometer;gyroscope" scrolling="no"
-      frameborder="0" name="ar_iframe"></iframe>
-  </div>
 
+  <script>
+    document.getElementById("menubutton").addEventListener("click", function() {
+      document.body.classList.add("sidenav-open");
+    });
+
+    function closesidebar() {
+      document.body.classList.remove("sidenav-open");
+    }
+
+    document.getElementById("closebutton").addEventListener("click", function() {
+      closesidebar();
+    });
+  </script>
+
+  <iframe class="frame" src="face-tracking-face-mesh.html" allow="camera;accelerometer;gyroscope" scrolling="no"
+      frameborder="0" name="ar_iframe" allowfullscreen></iframe>
 </body>
 
 </html>
