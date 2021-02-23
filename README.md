@@ -1,30 +1,16 @@
-# Zappar for ThreeJS Examples
+### Examples for Zappar ThreeJS
 
-This repository contains a set of examples for Zappar for ThreeJS. For more information, check out the package page for [Zappar for ThreeJS](https://www.npmjs.com/package/@zappar/zappar-threejs) (@zappar/zappar-threejs).
+Here is a list of repositories containing examples. For more information, check out the package page for Zappar for Three [@zappar/zappar-threejs](https://www.npmjs.com/package/@zappar/zappar-threejs)
 
-The examples are located in the `src` folder. We use `webpack` to compile and bundle the assets and code, and TypeScript to get full auto-complete and compile-time error checking.
 
-## Prerequisites
-
-To get started you'll want to ensure you have:
- - installed Node.js version 10 or later
- - printed out the example target image, `example-tracking-image.png`
-
-## Getting Started
-
-Once you have cloned this repository, open a terminal in the root directory of this project and follow these steps to get started.
-
-Install the dependencies by running:
-```
-npm install
-```
-
-Next, run the project using the following command:
-```
-npm start
-```
-
-The `webpack-dev-server` tool will host the content locally and give you an address you can open on your computer. On the page that loads, tap the different HTML files to try the examples. If you'd like to try on a mobile device, follow these steps:
-1. Ensure the device is on the same local network (e.g. Wifi)
-2. Find out the IP address of your computer
-3. On your mobile device, visit: `https://YOUR-IP-ADDRESS:PORT` replacing both `YOUR-IP-ADDRESS` and `PORT` (the port is the number after the `:` in the address given by `webpack-dev-server`). Note it's important to type `https` at the start of the address to ensure your device connects over HTTP**S**.
+| Example      | Repository |
+| ----------- | ----------- |
+| face-tracking-3d-model | https://github.com/zappar-xr/threejs-example-face-tracking-3d-model/ |
+| face-tracking-3d-model-photo-feature | https://github.com/zappar-xr/threejs-example-face-tracking-3d-model-photo-feature/ |
+| face-tracking-face-mesh | https://github.com/zappar-xr/threejs-example-face-tracking-face-mesh/ |
+| image-tracking-dynamic-lighting | https://github.com/zappar-xr/threejs-example-image-tracking-dynamic-lighting/ |
+| image-tracking-glb-animation | https://github.com/zappar-xr/threejs-example-image-tracking-glb-animation/ |
+| image-tracking-launch-url | https://github.com/zappar-xr/threejs-example-image-tracking-launch-url/ |
+| image-tracking-play-animation-from-gaze | https://github.com/zappar-xr/threejs-example-image-tracking-play-animation-from-gaze/ |
+| image-tracking-two-targets | https://github.com/zappar-xr/threejs-example-image-tracking-two-targets/ |
+| instant-tracking-gltf-loader | https://github.com/zappar-xr/threejs-example-instant-tracking-gltf-loader/ |
