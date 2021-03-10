@@ -12,8 +12,8 @@ Here is a list of repositories containing examples. For more information, check 
 | image-tracking-glb-animation | https://github.com/zappar-xr/threejs-example-image-tracking-glb-animation/ |
 | image-tracking-launch-url | https://github.com/zappar-xr/threejs-example-image-tracking-launch-url/ |
 | image-tracking-look-for-prompt | https://github.com/zappar-xr/threejs-example-image-tracking-look-for-prompt/ |
-| image-tracking-opening-transition | https://github.com/zappar-xr/threejs-example-image-tracking-opening-transition/ |
+| image-tracking-opening-transition 🟢 New | https://github.com/zappar-xr/threejs-example-image-tracking-opening-transition/ |
 | image-tracking-play-animation-from-gaze | https://github.com/zappar-xr/threejs-example-image-tracking-play-animation-from-gaze/ |
-| image-tracking-portal | https://github.com/zappar-xr/threejs-example-image-tracking-portal/ |
+| image-tracking-portal 🟢 New | https://github.com/zappar-xr/threejs-example-image-tracking-portal/ |
 | image-tracking-two-targets | https://github.com/zappar-xr/threejs-example-image-tracking-two-targets/ |
 | instant-tracking-gltf-loader | https://github.com/zappar-xr/threejs-example-instant-tracking-gltf-loader/ |
