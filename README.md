@@ -7,6 +7,7 @@ Here is a list of repositories containing examples. For more information, check 
 | ----------- | ----------- |
 | face-tracking-3d-model | https://github.com/zappar-xr/threejs-example-face-tracking-3d-model/ |
 | face-tracking-3d-model-photo-feature | https://github.com/zappar-xr/threejs-example-face-tracking-3d-model-photo-feature/ |
+| face-tracking-3d-model-video-recording | https://github.com/zappar-xr/threejs-example-face-tracking-3d-model-video-recording/ |
 | face-tracking-face-mesh | https://github.com/zappar-xr/threejs-example-face-tracking-face-mesh/ |
 | image-tracking-dynamic-lighting | https://github.com/zappar-xr/threejs-example-image-tracking-dynamic-lighting/ |
 | image-tracking-glb-animation | https://github.com/zappar-xr/threejs-example-image-tracking-glb-animation/ |
