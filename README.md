@@ -18,3 +18,4 @@ Here is a list of repositories containing examples. For more information, check 
 | image-tracking-portal | https://github.com/zappar-xr/threejs-example-image-tracking-portal/ |
 | image-tracking-two-targets | https://github.com/zappar-xr/threejs-example-image-tracking-two-targets/ |
 | instant-tracking-gltf-loader | https://github.com/zappar-xr/threejs-example-instant-tracking-gltf-loader/ |
+| instant-tracking-real-time-env-map | https://github.com/zappar-xr/threejs-example-instant-tracking-real-time-env-map/ |
