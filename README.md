@@ -21,5 +21,6 @@ Here is a list of repositories containing examples. For more information, check 
 | instant-tracking-cannon-physics | https://github.com/zappar-xr/threejs-example-instant-tracking-cannon-physics/ |
 | instant-tracking-gltf-loader | https://github.com/zappar-xr/threejs-example-instant-tracking-gltf-loader/ |
 | instant-tracking-real-time-env-map | https://github.com/zappar-xr/threejs-example-instant-tracking-real-time-env-map/ |
+| instant-tracking-volumetric-video-arcturus | https://github.com/zappar-xr/threejs-example-instant-tracking-volumetric-video-arcturus/ |
 | instant-tracking-volumetric-video-sense-of-space | https://github.com/zappar-xr/threejs-example-instant-tracking-volumetric-video-sense-of-space/ |
 | multiple-tracking-product-visualization | https://github.com/zappar-xr/threejs-example-multiple-tracking-product-visualization/ |
